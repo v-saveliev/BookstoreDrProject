@@ -35,8 +35,13 @@ public class LoginController {
             return "login_page";
         }
 
-        logger.info("login OK redirect to book shelf");
-            return "redirect:/books";
+        if (loginService.authenticate(loginForm)) {
+            logger.info("login OK redirect to book shelf");
+            return "login_page";
+        } else {
+            return "login_page";
+        }
+
     }
 
 
